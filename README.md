@@ -6,7 +6,7 @@ simple api implementation to get geo coordinates from postcodes over ziplocate.u
 ### Install via Composer
 In the `require` key of `composer.json` file add the following
 
-    "ins0/google-measurement-php-client": "dev-master"
+    "ins0/php-simple-ziplocate": "dev-master"
 
 Run the Composer update command
 
