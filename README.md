@@ -1,7 +1,7 @@
 php-ziplocate-api
 =================
 
-simple api implementation to get geo coordinates from postcodes
+simple api implementation to get geo coordinates from postcodes over ziplocate.us
 
 ### Install via Composer
 In the `require` key of `composer.json` file add the following
