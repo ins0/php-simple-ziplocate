@@ -42,18 +42,21 @@ class ZipLocate
     {
         $url = sprintf('%s/%s%s', self::$apiEndpoint, self::$apiVersion, $resource);
 
-        // check 404
-        $headers = get_headers($url);
-        if( ! $headers || !isset($headers[0]) )
-            return false;
+        // send get
+        $options = array(
+            'http' => array(
+                'method'  => 'GET',
+                'ignore_errors' => true
+            ),
+        );
+        $context  = stream_context_create($options);
+        $data = file_get_contents($url, false, $context);
 
-        $responseCode = substr($headers[0], 9, 3);
-        if( $responseCode != 200 )
+        // check header
+        if(!isset($http_response_header[0]) || substr($http_response_header[0], 9, 3) != 200 )
+        {
             return false;
-
-        $data = file_get_contents($url);
-        if( ! $data )
-            return false;
+        }
 
         return self::getResponse($data);
     }
