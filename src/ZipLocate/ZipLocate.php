@@ -49,6 +49,8 @@ class ZipLocate
                 'ignore_errors' => true
             ),
         );
+
+        $http_response_header = array();
         $context  = stream_context_create($options);
         $data = file_get_contents($url, false, $context);
 
